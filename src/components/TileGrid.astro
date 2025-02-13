@@ -1,0 +1,42 @@
+---
+import Tile from './Tile.astro'
+import type { Game } from '../types/Game'
+
+const { items } = Astro.props as { items: Game[] }
+
+const randomTile: Game = {
+  link: '#',
+  icon: '🎲',
+  name: 'Aleatorio',
+}
+---
+<div class="gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  <Tile
+    class="tile-random"
+    item={randomTile}
+  />
+
+  {items.map(item => (
+    <Tile item={item} />
+  ))}
+</div>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const gameTiles = document.querySelectorAll('.tile-game')
+    const randomTile = document.querySelector('.tile-random')
+
+    if (0 === gameTiles.length) {
+      return
+    }
+
+    randomTile.addEventListener('click', (e) => {
+      e.preventDefault()
+
+      const randomIndex = Math.floor(Math.random() * gameTiles.length)
+      const selectedTile = gameTiles[randomIndex]
+
+      selectedTile.click()
+    })
+  })
+</script>

@@ -1,0 +1,28 @@
+---
+import type { Game } from '../types/Game'
+
+const { item, class: extraClass } = Astro.props as {
+  item: Game;
+  class?: string;
+}
+const tileClass = `block tile ${extraClass ?? 'tile-game'}`
+---
+<a
+  class={tileClass}
+  href={item.link}
+  {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+  title={item.name}
+>
+  <div>
+    <div class="flex flex-col h-full items-center justify-center p-6">
+      <span
+        aria-label={item.name}
+        class="mb-4 text-4xl"
+        role="img"
+      >
+        {item.icon}
+      </span>
+      <h2 class="font-medium text-center text-xl">{item.name}</h2>
+    </div>
+  </div>
+</a>

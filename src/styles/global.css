@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --color-primary: #af0d11;
+  --font-header: 'Bebas Neue', 'sans-serif';
+}
+
+:focus-visible {
+  @apply outline-dashed outline-2 outline-offset-4 outline-primary;
+}
+
+.btn {
+  @apply cursor-pointer px-8 py-4 rounded-xl hover:scale-105;
+}
+
+.btn.btn-danger {
+  @apply bg-rose-500 hover:bg-rose-600 text-white;
+}
+
+.btn.btn-success {
+  @apply bg-emerald-500 hover:bg-green-600 text-white;
+}
+
+.tile > div {
+  @apply duration-300 rounded-md shadow-md hover:shadow-lg transform transition-all hover:-translate-y-1;
+}
+
+.tile-game > div {
+  @apply bg-white hover:bg-gray-50 text-gray-800;
+}
+
+.tile-random > div {
+  @apply bg-primary hover:bg-primary/90 text-white;
+}

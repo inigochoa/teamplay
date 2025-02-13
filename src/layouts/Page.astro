@@ -1,0 +1,14 @@
+---
+import Layout from './Layout.astro'
+import Timer from '../components/Timer.astro'
+
+const { frontmatter } = Astro.props
+---
+<Layout title={frontmatter.title}>
+  <article class="prose prose-lg">
+    <h1>{frontmatter.title}</h1>
+    <slot />
+  </article>
+
+  {frontmatter.timer && <Timer seconds={frontmatter.timer} />}
+</Layout>

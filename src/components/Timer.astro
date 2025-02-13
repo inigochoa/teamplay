@@ -1,0 +1,62 @@
+---
+const { seconds = 100 } = Astro.props
+---
+<div id="timer" class="absolute bg-white border border-gray-300 bottom-24 flex flex-col items-center max-w-md mx-auto mt-4 pt-4 p-6 right-10 rounded-lg shadow-sm w-full" data-seconds={seconds}>
+  <div id="time-display" class="font-bold font-mono text-7xl text-center mb-8"></div>
+  <div class="flex justify-center space-x-6">
+    <button id="start-btn" class="btn btn-success">Iniciar</button>
+    <button id="stop-btn" class="btn btn-danger">Detener</button>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const timer = document.getElementById('timer')
+    const display = document.getElementById('time-display')
+    const startBtn = document.getElementById('start-btn')
+    const stopBtn = document.getElementById('stop-btn')
+
+    const initial = parseInt(timer.dataset.seconds || '120')
+    let seconds = initial
+    let interval = null
+
+    const updateDisplay = () => {
+      const m = Math.floor(seconds / 60).toString().padStart(2, '0')
+      const s = (seconds % 60).toString().padStart(2, '0')
+
+      display.textContent = `${m}:${s}`
+    }
+
+    const startTimer = () => {
+      if (interval) {
+        return
+      }
+
+      interval = setInterval(() => {
+        seconds--
+        if (0 > seconds) {
+          clearInterval(interval)
+          interval = null
+          seconds = 0
+        }
+
+        updateDisplay()
+      }, 1000)
+    }
+
+    const cancelTimer = () => {
+      if (interval)  {
+        clearInterval(interval)
+        interval = null
+      }
+
+      seconds = initial
+      updateDisplay()
+    }
+
+    startBtn.addEventListener('click', startTimer)
+    stopBtn.addEventListener('click', cancelTimer)
+
+    updateDisplay()
+  })
+</script>

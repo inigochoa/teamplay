@@ -1,0 +1,44 @@
+---
+import '../styles/global.css'
+import { ClientRouter } from 'astro:transitions'
+import { Seo } from 'astro-seo-meta'
+import { site } from '../data/site'
+import ogImage from '../images/og-image.webp'
+
+const { title } = Astro.props
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : ''
+const metaTitle = `${title} - ${site.name}`
+---
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    content="width=device-width"
+    name="viewport"
+  />
+  <meta
+    content={Astro.generator}
+    name="generator"
+  />
+  <meta
+    content={metaTitle}
+    name="title"
+  />
+  {canonical && <link rel="canonical" href={canonical} />}
+  <Seo
+    title={metaTitle}
+    description={site.description}
+    icon="/favicon.svg"
+    robots="noindex"
+    themeColor={site.themeColor}
+    facebook={{
+      image: ogImage.src,
+      type: "website",
+      url: canonical,
+    }}
+    twitter={{
+      image: ogImage.src,
+      card: "summary_large_image",
+    }}
+  />
+  <ClientRouter />
+</head>
