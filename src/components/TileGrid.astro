@@ -21,10 +21,10 @@ const randomTile: Game = {
   ))}
 </div>
 
-<script is:inline>
+<script>
   document.addEventListener('astro:page-load', () => {
     const gameTiles = document.querySelectorAll('.tile-game')
-    const randomTile = document.querySelector('.tile-random')
+    const randomTile = document.querySelector('.tile-random') as HTMLElement
 
     if (0 === gameTiles.length) {
       return
@@ -34,7 +34,7 @@ const randomTile: Game = {
       e.preventDefault()
 
       const randomIndex = Math.floor(Math.random() * gameTiles.length)
-      const selectedTile = gameTiles[randomIndex]
+      const selectedTile = gameTiles[randomIndex] as HTMLElement
 
       selectedTile.click()
     })
