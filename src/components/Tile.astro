@@ -1,16 +1,22 @@
 ---
-import type { Game } from '../types/Game'
+import type { Game } from '../types/game'
 
 const { item, class: extraClass } = Astro.props as {
-  item: Game;
-  class?: string;
+  item: Game
+  class?: string
 }
 const tileClass = `block tile ${extraClass ?? 'tile-game'}`
 ---
 <a
   class={tileClass}
-  href={item.link}
-  {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+  {...('external' == item.type
+    ? { href: item.link }
+    : { href: `/games/${item.link}` }
+  )}
+  {...('external' == item.type
+    ? { target: '_blank', rel: 'noopener noreferrer' }
+    : {}
+  )}
   title={item.name}
 >
   <div>
@@ -19,10 +25,14 @@ const tileClass = `block tile ${extraClass ?? 'tile-game'}`
         aria-label={item.name}
         class="mb-4 text-4xl"
         role="img"
+        transition:name={item.icon}
       >
         {item.icon}
       </span>
-      <h2 class="font-medium text-center text-xl">{item.name}</h2>
+      <h2
+        class="font-medium text-center text-xl"
+        transition:name={item.name}
+      >{item.name}</h2>
     </div>
   </div>
 </a>

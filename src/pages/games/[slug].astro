@@ -1,0 +1,34 @@
+---
+import type { Game } from '../../types/game'
+
+import games from '../../data/games'
+import Layout from '../../layouts/Layout.astro'
+import Timer from '../../components/Timer.astro'
+
+export async function getStaticPaths() {
+  return games
+    .filter((game: Game) => 'internal' === game.type)
+    .map((game: Game) => ({
+    params: { slug: game.link },
+  }))
+}
+
+const { slug } = Astro.params
+const game = games.find((game: Game) => game.link === slug && 'internal' === game.type)
+
+if (!game) {
+  throw new Error('Game not found')
+}
+---
+<Layout title={game.name}>
+  <article class="prose prose-lg">
+    <h1>
+      <span transition:name={game.icon}>{game.icon}</span>
+      <span transition:name={game.name}>{game.name}</span>
+    </h1>
+
+    <Fragment set:html={game.content} />
+  </article>
+
+  {game.timer && <Timer seconds={game.timer} />}
+</Layout>
