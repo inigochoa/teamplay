@@ -1,7 +1,10 @@
-import type { InternalGame } from '../../types/game'
+import GameInternal from '../../models/GameInternal'
 
-const secretPortrait: InternalGame = {
-  content: `
+const secretPortrait = new GameInternal(
+  '👤',
+  'secret-portrait',
+  'Retrato secreto',
+  `
     <p>"Retrato secreto" es un juego en el que cada uno se describe usando varias
     categorías y, a partir de esas pistas, los demás tienen que adivinar de quién
     se trata.</p>
@@ -18,10 +21,6 @@ const secretPortrait: InternalGame = {
       <li><strong>Anécdotas</strong></li>
     </ul>
   `,
-  icon: '🕵️‍♂️',
-  link: 'secret-portrait',
-  name: 'Retrato secreto',
-  type: 'internal',
-}
+)
 
 export default secretPortrait

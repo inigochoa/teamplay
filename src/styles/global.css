@@ -23,14 +23,26 @@
   @apply bg-emerald-500 hover:bg-green-600 text-white;
 }
 
-.tile > div {
-  @apply duration-300 rounded-md shadow-md hover:shadow-lg transform transition-all hover:-translate-y-1;
+.tile {
+  @apply block;
 }
 
-.tile-game > div {
+.tile div {
+  @apply duration-300 flex flex-col h-full items-center justify-between p-6 rounded-md shadow-md hover:shadow-lg transform transition-all hover:-translate-y-1;
+}
+
+.tile div h2 {
+  @apply font-medium text-center text-xl;
+}
+
+.tile div span {
+  @apply mb-4 text-5xl;
+}
+
+.tile-game div {
   @apply bg-white hover:bg-gray-50 text-gray-800;
 }
 
-.tile-random > div {
+.tile-random div {
   @apply bg-primary hover:bg-primary/90 text-white;
 }

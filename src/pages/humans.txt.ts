@@ -1,5 +1,4 @@
 import type { APIRoute } from 'astro'
-
 import site from '../data/site'
 
 export const GET: APIRoute = async () => {

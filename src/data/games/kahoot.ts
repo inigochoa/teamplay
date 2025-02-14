@@ -1,10 +1,9 @@
-import type { ExternalGame } from '../../types/game'
+import GameExternal from '../../models/GameExternal'
 
-const kahoot: ExternalGame = {
-  icon: '❓',
-  link: 'https://create.kahoot.it/discover',
-  name: 'Kahoot',
-  type: 'external',
-}
+const kahoot = new GameExternal(
+  '❓',
+  'https://create.kahoot.it/discover',
+  'Kahoot',
+)
 
 export default kahoot

@@ -1,20 +1,20 @@
 ---
-import type { Game } from '../../types/game'
-
+import type Game from '../../models/Game'
+import GameInternal from '../../models/GameInternal'
 import games from '../../data/games'
 import Layout from '../../layouts/Layout.astro'
 import Timer from '../../components/Timer.astro'
 
 export async function getStaticPaths() {
   return games
-    .filter((game: Game) => 'internal' === game.type)
+    .filter((game: Game) => game instanceof GameInternal)
     .map((game: Game) => ({
     params: { slug: game.link },
   }))
 }
 
 const { slug } = Astro.params
-const game = games.find((game: Game) => game.link === slug && 'internal' === game.type)
+const game = games.find((game: Game) => game.link === slug && game instanceof GameInternal)
 
 if (!game) {
   throw new Error('Game not found')
@@ -27,7 +27,7 @@ if (!game) {
       <span transition:name={game.name}>{game.name}</span>
     </h1>
 
-    <Fragment set:html={game.content} />
+    <Fragment set:html={game.description} />
   </article>
 
   {game.timer && <Timer seconds={game.timer} />}

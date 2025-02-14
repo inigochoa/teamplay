@@ -1,10 +1,9 @@
-import type { ExternalGame } from '../../types/game'
+import GameExternal from '../../models/GameExternal'
 
-const tags: ExternalGame = {
-  icon: '🏷️',
-  link: 'https://juegos.nrnnm.com/etiquetas/',
-  name: 'Etiquetas',
-  type: 'external',
-}
+const tags = new GameExternal(
+  '🔖',
+  'https://juegos.nrnnm.com/etiquetas/',
+  'Etiquetas',
+)
 
 export default tags

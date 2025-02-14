@@ -1,7 +1,10 @@
-import type { InternalGame } from '../../types/game'
+import GameInternal from '../../models/GameInternal'
 
-const stop: InternalGame = {
-  content: `
+const stop = new GameInternal(
+  '🛑',
+  'stop',
+  'Stop',
+  `
     <p>"Stop" es un juego en el que se elige una letra al azar y, en un tiempo
     limitado, cada jugador debe escribir una palabra que empiece por esa letra para
     cada categoría establecida. Al acabar la ronda, se comparan las respuestas y se
@@ -18,10 +21,6 @@ const stop: InternalGame = {
       <li><strong>Objeto</strong></li>
     </ul>
   `,
-  icon: '🛑',
-  link: 'stop',
-  name: 'Stop',
-  type: 'internal',
-}
+)
 
 export default stop

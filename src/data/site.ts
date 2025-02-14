@@ -11,7 +11,7 @@ const site: Site = {
   },
   meta: {
     description: '',
-    name: 'Team building',
+    name: 'TeamPlay',
     themeColor: '#af0d11',
   },
 }

@@ -1,7 +1,10 @@
-import type { InternalGame } from '../../types/game'
+import GameInternal from '../../models/GameInternal'
 
-const followTheStory: InternalGame = {
-  content: `
+const followTheStory = new GameInternal(
+  '📜',
+  'follow-the-story',
+  'Sigue la historia',
+  `
     <p>"Sigue la historia" es un juego colaborativo en el que todos construís una
     narración entre vueltas. Cada participante escribe en papeles elementos como
     localizaciones, personajes, acciones y objetos. Después se mezclan y se van
@@ -9,10 +12,6 @@ const followTheStory: InternalGame = {
     giros inesperados. Es perfecto para fomentar la creatividad, romper el hielo y
     pasar un rato divertido entre amigos o compañeros.</p>
   `,
-  icon: '📜',
-  link: 'follow-the-story',
-  name: 'Sigue la historia',
-  type: 'internal',
-}
+)
 
 export default followTheStory

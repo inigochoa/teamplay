@@ -1,10 +1,9 @@
-import type { ExternalGame } from '../../types/game'
+import GameExternal from '../../models/GameExternal'
 
-const openguesser: ExternalGame = {
-  icon: '🌍',
-  link: 'https://openguessr.com/',
-  name: 'Opengessr',
-  type: 'external',
-}
+const openguesser = new GameExternal(
+  '🌍',
+  'https://openguessr.com/',
+  'Opengessr',
+)
 
 export default openguesser

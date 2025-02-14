@@ -1,9 +1,12 @@
 ---
-// import { games } from '../data/games'
-import games from '../data/games'
 import Layout from '../layouts/Layout.astro'
 import TileGrid from '../components/TileGrid.astro'
 ---
-<Layout title="Inicio">
-  <TileGrid items={games} />
+<Layout>
+  <section class="max-w-none prose prose-lg">
+    <h1>Juegos para Fortalecer Equipos</h1>
+    <p>Descubre una variedad de juegos de trabajo en equipo diseñados para mejorar la comunicación, elevar la moral y fomentar la colaboración entre los miembros de su equipo. Ya sea que estéis en la oficina o trabajando de forma remota, estas actividades ayudarán a crear un entorno de trabajo más cohesionado y productivo.</p>
+
+    <TileGrid />
+  </section>
 </Layout>

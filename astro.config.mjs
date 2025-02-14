@@ -4,11 +4,16 @@ import tailwindcss from '@tailwindcss/vite'
 
 import metaTags from 'astro-meta-tags';
 
+import mdx from '@astrojs/mdx';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://martes-locos.veiss.com',
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [metaTags()]
+  integrations: [metaTags(), mdx()],
+  experimental: {
+    svg: true,
+  },
 })

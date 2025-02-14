@@ -1,22 +1,13 @@
 ---
+import games from '../data/games'
+import type Game from '../models/Game'
 import Tile from './Tile.astro'
-import type { Game } from '../types/Game'
-
-const { items } = Astro.props as { items: Game[] }
-
-const randomTile: Game = {
-  link: '#',
-  icon: '🎲',
-  name: 'Aleatorio',
-}
+import TileRandom from './TileRandom.astro'
 ---
-<div class="gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-  <Tile
-    class="tile-random"
-    item={randomTile}
-  />
+<div class="gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 not-prose">
+  <TileRandom />
 
-  {items.map(item => (
+  {games.map((item: Game) => (
     <Tile item={item} />
   ))}
 </div>

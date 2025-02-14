@@ -1,10 +1,9 @@
-import type { ExternalGame } from '../../types/game'
+import GameExternal from '../../models/GameExternal'
 
-const pinturilloTwo: ExternalGame = {
-  icon: '🖌️',
-  link: 'https://www.pinturillo2.com/es/',
-  name: 'Pinturillo 2',
-  type: 'external',
-}
+const pinturilloTwo = new GameExternal(
+  '🖌️',
+  'https://www.pinturillo2.com/es/',
+  'Pinturillo 2',
+)
 
 export default pinturilloTwo
