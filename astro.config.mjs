@@ -1,10 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
-
 import metaTags from 'astro-meta-tags';
-
-import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,7 +9,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [metaTags(), mdx()],
+  integrations: [metaTags()],
   experimental: {
     svg: true,
   },
