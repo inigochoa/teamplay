@@ -1,7 +1,7 @@
 ---
 const { seconds = 100 } = Astro.props
 ---
-<div id="timer" class="absolute bg-white border border-gray-300 bottom-24 flex flex-col items-center max-w-md mx-auto mt-4 pt-4 p-6 right-10 rounded-lg shadow-sm w-full" data-seconds={seconds}>
+<div id="timer" class="bg-white border border-gray-300 flex flex-col items-center max-w-md mx-auto mt-4 pt-4 p-6 rounded-lg select-none shadow-sm w-full" data-seconds={seconds}>
   <div id="time-display" class="font-bold font-mono text-7xl text-center mb-8"></div>
   <div class="flex justify-center space-x-6">
     <button id="start-btn" class="btn btn-success">Iniciar</button>
