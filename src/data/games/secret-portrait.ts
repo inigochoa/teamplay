@@ -4,6 +4,7 @@ const secretPortrait = new GameInternal(
   '👤',
   'secret-portrait',
   'Retrato secreto',
+  ['Colaboración', 'Confianza', 'Deducción'],
   `
     <p>"Retrato secreto" es un juego en el que cada uno se describe usando varias
     categorías y, a partir de esas pistas, los demás tienen que adivinar de quién

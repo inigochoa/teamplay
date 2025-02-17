@@ -4,6 +4,7 @@ const followTheStory = new GameInternal(
   '📜',
   'follow-the-story',
   'Sigue la historia',
+  ['Colaboración', 'Creatividad', 'Improvisación'],
   `
     <p>"Sigue la historia" es un juego colaborativo en el que todos construís una
     narración entre vueltas. Cada participante escribe en papeles elementos como

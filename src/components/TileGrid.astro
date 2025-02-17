@@ -14,20 +14,53 @@ import TileRandom from './TileRandom.astro'
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    const gameTiles = document.querySelectorAll('.tile-game')
-    const randomTile = document.querySelector('.tile-random') as HTMLElement
+    const doFilter = () => {
+      const buttons = document.querySelectorAll('.filter')
+      const gameTiles = document.querySelectorAll('.tile-game')
 
-    if (0 === gameTiles.length) {
-      return
+      if (0 === buttons.length || 0 === gameTiles.length) {
+        return
+      }
+
+      buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault()
+
+          const filter = button.dataset.filter
+          buttons.forEach(btn => btn.classList.remove('active'))
+          button.classList.add('active')
+
+          gameTiles.forEach(tile => {
+            const tags = tile.dataset.tags.split(',')
+            if ('' === filter || tags.includes(filter)) {
+              tile.style.display = ''
+            } else {
+              tile.style.display = 'none'
+            }
+          })
+        })
+      })
     }
 
-    randomTile.addEventListener('click', (e) => {
-      e.preventDefault()
+    const doRandomSelect = () => {
+      const gameTiles = document.querySelectorAll('.tile-game')
+      const randomTile = document.querySelector('.tile-random') as HTMLElement
 
-      const randomIndex = Math.floor(Math.random() * gameTiles.length)
-      const selectedTile = gameTiles[randomIndex] as HTMLElement
+      if (0 === gameTiles.length) {
+        return
+      }
 
-      selectedTile.click()
-    })
+      randomTile.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        const randomIndex = Math.floor(Math.random() * gameTiles.length)
+        const selectedTile = gameTiles[randomIndex] as HTMLElement
+
+        selectedTile.click()
+      })
+    }
+
+    doFilter()
+    doRandomSelect()
   })
 </script>

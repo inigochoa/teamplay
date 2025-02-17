@@ -1,0 +1,16 @@
+---
+import filters from '../data/filters'
+---
+
+<div class="flex flex-wrap gap-2 mb-6">
+  <button
+    class="filter active"
+    data-filter=""
+  >Todos</button>
+  {filters.map(filter => (
+    <button
+      class="filter"
+      data-filter={filter}
+    >{filter}</button>
+  ))}
+</div>

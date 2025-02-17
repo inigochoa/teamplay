@@ -4,6 +4,7 @@ const whoAmI = new GameInternal(
  '🕵️‍♂️',
   'who-am-i',
   '¿Quién soy?',
+  ['Deducción'],
   `
     <p>"¿Quién soy?" es un juego divertido y dinámico ideal para romper el hielo y
     fomentar el trabajo en equipo. Cada jugador escribe el nombre de un personaje en

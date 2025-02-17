@@ -3,6 +3,7 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
+  --color-accent: #2c2c2c;
   --color-primary: #af0d11;
   --font-header: 'Bebas Neue', 'sans-serif';
 }
@@ -23,8 +24,16 @@
   @apply bg-emerald-500 hover:bg-green-600 text-white;
 }
 
+.filter {
+  @apply bg-white hover:bg-accent border border-accent cursor-pointer font-medium h-10 px-4 py-2 ring-offset-white rounded-md text-sm hover:text-white transition-colors whitespace-nowrap;
+}
+
+.filter.active {
+  @apply bg-primary border-primary text-white;
+}
+
 .tile {
-  @apply cursor-pointer duration-300 flex flex-col h-full items-center justify-between p-6 rounded-md shadow-md hover:shadow-lg transform transition-all hover:-translate-y-1;
+  @apply cursor-pointer duration-300 flex flex-col h-full items-center justify-between p-6 rounded-md shadow-md hover:shadow-lg transform transition-transform hover:-translate-y-1;
 }
 
 .tile h2 {

@@ -8,6 +8,7 @@ const { href, linkProps } = item.getGameLink()
 <a
   aria-label={label}
   class="tile tile-game"
+  data-tags={item.tags.join(',')}
   href={href}
   title={label}
   {...linkProps}

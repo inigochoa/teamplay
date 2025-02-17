@@ -6,13 +6,14 @@ class GameInternal extends Game {
   timer?: number
 
   constructor(
-    icon: string,
-    link: string,
-    name: string,
+    public icon: string,
+    public link: string,
+    public name: string,
+    public tags: string[],
     description: string,
     timer?: number
   ) {
-    super(icon, link, name)
+    super(icon, link, name, tags)
 
     this.description = description
     this.timer = timer

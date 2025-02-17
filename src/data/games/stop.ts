@@ -4,6 +4,7 @@ const stop = new GameInternal(
   '🛑',
   'stop',
   'Stop',
+  ['Competitivo', 'Trivia'],
   `
     <p>"Stop" es un juego en el que se elige una letra al azar y, en un tiempo
     limitado, cada jugador debe escribir una palabra que empiece por esa letra para

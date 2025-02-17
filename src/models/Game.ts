@@ -5,6 +5,7 @@ abstract class Game {
     public icon: string,
     public link: string,
     public name: string,
+    public tags: string[],
   ) {}
 
   abstract getGameLink(): LinkProps
