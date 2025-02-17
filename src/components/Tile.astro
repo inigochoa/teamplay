@@ -12,14 +12,12 @@ const { href, linkProps } = item.getGameLink()
   title={label}
   {...linkProps}
 >
-  <div>
-    <span
-      aria-label={item.name}
-      role="img"
-      transition:name={item.icon}
-    >
-      {item.icon}
-    </span>
-    <h2 transition:name={item.name}>{item.name}</h2>
-  </div>
+  <span
+    aria-label={item.name}
+    role="img"
+    transition:name={item.icon}
+  >
+    {item.icon}
+  </span>
+  <h2 transition:name={item.name}>{item.name}</h2>
 </a>
