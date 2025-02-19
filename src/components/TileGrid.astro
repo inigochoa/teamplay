@@ -1,8 +1,9 @@
 ---
-import games from '../data/games'
 import type Game from '../models/Game'
 import Tile from './Tile.astro'
 import TileRandom from './TileRandom.astro'
+
+const { games } = Astro.props
 ---
 <div class="gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 not-prose">
   <TileRandom />
@@ -22,20 +23,20 @@ import TileRandom from './TileRandom.astro'
         return
       }
 
-      buttons.forEach(button => {
-        button.addEventListener('click', (e) => {
+      buttons.forEach((button: Element) => {
+        button.addEventListener('click', (e: Event) => {
           e.preventDefault()
 
-          const filter = button.dataset.filter
-          buttons.forEach(btn => btn.classList.remove('active'))
+          const filter = (button as HTMLElement).dataset.filter
           button.classList.add('active')
+          buttons.forEach((btn: Element) => btn.classList.remove('active'))
 
-          gameTiles.forEach(tile => {
-            const tags = tile.dataset.tags.split(',')
-            if ('' === filter || tags.includes(filter)) {
-              tile.style.display = ''
+          gameTiles.forEach((tile: Element) => {
+            const tags = (tile as HTMLElement).dataset.tags!.split(',')
+            if (!filter || '' === filter || tags.includes(filter)) {
+              (tile as HTMLElement).style.display = ''
             } else {
-              tile.style.display = 'none'
+              (tile as HTMLElement).style.display = 'none'
             }
           })
         })
@@ -43,15 +44,18 @@ import TileRandom from './TileRandom.astro'
     }
 
     const doRandomSelect = () => {
-      const gameTiles = document.querySelectorAll('.tile-game')
       const randomTile = document.querySelector('.tile-random') as HTMLElement
-
-      if (0 === gameTiles.length) {
-        return
-      }
 
       randomTile.addEventListener('click', (e) => {
         e.preventDefault()
+
+        const gameTiles = Array
+          .from(document.querySelectorAll('.tile-game'))
+          .filter((el: Element) => 'none' !== getComputedStyle(el).display)
+
+        if (0 === gameTiles.length) {
+          return
+        }
 
         const randomIndex = Math.floor(Math.random() * gameTiles.length)
         const selectedTile = gameTiles[randomIndex] as HTMLElement

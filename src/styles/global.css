@@ -13,11 +13,15 @@
 }
 
 .btn {
-  @apply cursor-pointer px-8 py-4 rounded-xl hover:scale-105;
+  @apply cursor-pointer gap-2 inline-flex items-center px-8 py-4 rounded-xl transition-transform hover:scale-105 [&_svg]:size-4;
 }
 
 .btn.btn-danger {
   @apply bg-rose-500 hover:bg-rose-600 text-white;
+}
+
+.btn.btn-external {
+  @apply bg-white hover:bg-primary border border-primary text-primary hover:text-white;
 }
 
 .btn.btn-success {

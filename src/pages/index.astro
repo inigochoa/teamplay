@@ -1,14 +1,42 @@
 ---
+import type Game from '../models/Game'
+import { Schema } from 'astro-seo-schema'
+import games from '../data/games'
+import filters from '../data/filters'
+import site from '../data/site'
 import Filters from '../components/Filters.astro'
 import Layout from '../layouts/Layout.astro'
 import TileGrid from '../components/TileGrid.astro'
+
+const itemListElement = games
+  .map((game: Game, index) => {
+    return {
+      ...game.getListLdJson(Astro.site),
+      position: index + 1
+    }
+  })
 ---
 <Layout>
+  <Schema
+    item={{
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: site.meta.name,
+      description: site.meta.description,
+      url: Astro.url.href,
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: itemListElement,
+      }
+    }}
+    slot="schema"
+  />
+
   <section class="max-w-none prose prose-lg">
     <h1>Juegos para Fortalecer Equipos</h1>
     <p>Descubre una variedad de juegos de trabajo en equipo diseñados para mejorar la comunicación, elevar la moral y fomentar la colaboración entre los miembros de su equipo. Ya sea que estéis en la oficina o trabajando de forma remota, estas actividades ayudarán a crear un entorno de trabajo más cohesionado y productivo.</p>
 
-    <Filters />
-    <TileGrid />
+    <Filters filters={filters} />
+    <TileGrid games={games} />
   </section>
 </Layout>

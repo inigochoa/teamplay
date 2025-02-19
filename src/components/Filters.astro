@@ -1,5 +1,5 @@
 ---
-import filters from '../data/filters'
+const { filters } = Astro.props
 ---
 
 <div class="flex flex-wrap gap-2 mb-6">
@@ -7,7 +7,7 @@ import filters from '../data/filters'
     class="filter active"
     data-filter=""
   >Todos</button>
-  {filters.map(filter => (
+  {filters.map((filter: string) => (
     <button
       class="filter"
       data-filter={filter}

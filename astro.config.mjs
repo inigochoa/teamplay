@@ -1,15 +1,23 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
+import robotsTxt from 'astro-robots-txt'
+import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
-import metaTags from 'astro-meta-tags';
+import robotsConfig from './src/lib/robotsConfig'
+import sitemapConfig from './src/lib/sitemapConfig'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://martes-locos.veiss.com',
+  site: 'https://teamplay.inigochoa.cc',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [
+      tailwindcss(),
+    ]
   },
-  integrations: [metaTags()],
+  integrations: [
+    robotsTxt(robotsConfig),
+    sitemap(sitemapConfig),
+  ],
   experimental: {
     svg: true,
   },

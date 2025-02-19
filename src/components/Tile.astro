@@ -2,19 +2,16 @@
 import type Game from '../models/Game'
 
 const { item } = Astro.props as { item: Game }
-const label = item.getLabel()
-const { href, linkProps } = item.getGameLink()
 ---
 <a
-  aria-label={label}
+  aria-label={item.getLabel()}
   class="tile tile-game"
   data-tags={item.tags.join(',')}
-  href={href}
-  title={label}
-  {...linkProps}
+  href={item.getGameLink()}
+  title={item.getLabel()}
 >
   <span
-    aria-label={item.name}
+    aria-label={item.getLabel()}
     role="img"
     transition:name={item.icon}
   >

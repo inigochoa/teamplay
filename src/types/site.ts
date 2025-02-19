@@ -13,6 +13,7 @@ interface Chef {
   from: string
   media: Media
   name: string
+  url: string
 }
 
 export interface Site {

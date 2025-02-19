@@ -1,0 +1,19 @@
+---
+import Externallink from '../assets/externallink.svg'
+
+const { game } = Astro.props
+---
+
+<div class="flex justify-center mt-12">
+  <a
+    aria-label={game.getLabel()}
+    class="btn btn-external"
+    href={game.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    title={game.getLabel()}
+  >
+    <Externallink />
+    {game.getLabel()}
+  </a>
+</div>

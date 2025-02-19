@@ -1,26 +1,35 @@
 ---
 import type Game from '../../models/Game'
-import GameInternal from '../../models/GameInternal'
+import { Schema } from 'astro-seo-schema'
+import GameExternal from '../../models/GameExternal'
 import games from '../../data/games'
+import ExternalLink from '../../components/ExternalLink.astro'
 import Layout from '../../layouts/Layout.astro'
 import Timer from '../../components/Timer.astro'
 
 export async function getStaticPaths() {
   return games
-    .filter((game: Game) => game instanceof GameInternal)
     .map((game: Game) => ({
-    params: { slug: game.link },
+    params: { slug: game.slug },
   }))
 }
 
 const { slug } = Astro.params
-const game = games.find((game: Game) => game.link === slug && game instanceof GameInternal)
+const game = games.find((game: Game) => game.slug === slug)
 
 if (!game) {
   throw new Error('Game not found')
 }
 ---
-<Layout title={game.name}>
+<Layout
+  description={game.descriptionShort}
+  title={game.name}
+>
+  <Schema
+    item={game.getPageLdJson(Astro.site)}
+    slot="schema"
+  />
+
   <article class="prose prose-lg">
     <h1>
       <span transition:name={game.icon}>{game.icon}</span>
@@ -29,6 +38,8 @@ if (!game) {
 
     <Fragment set:html={game.description} />
   </article>
+
+  {game instanceof GameExternal && <ExternalLink game={game} />}
 
   {game.timer && <Timer seconds={game.timer} />}
 </Layout>

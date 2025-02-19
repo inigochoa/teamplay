@@ -1,16 +1,62 @@
 ---
 import '@fontsource/bebas-neue'
-import '@fontsource-variable/oswald'
-
+import '../styles/global.css'
+import { ClientRouter } from 'astro:transitions'
+import { SEO } from 'astro-seo'
 import Footer from '../components/Footer.astro'
-import Head from '../components/Head.astro'
 import Header from '../components/Header.astro'
+import site from '../data/site'
+import ogImage from '../assets/og-image.webp'
 
-const { title } = Astro.props
+const { title, description } = Astro.props
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : ''
 ---
 <!doctype html>
 <html lang="es">
-  <Head title={title} />
+  <head>
+    <SEO
+      charset='UTF-8'
+      description={description ?? site.meta.description}
+      extend={{
+        link: [
+          { rel: 'icon', href: '/favicon.svg' },
+          { rel: 'sitemap', href: '/sitemap-index.xml' },
+        ],
+        meta: [
+          { name: 'generator', content: Astro.generator },
+          { name: 'theme-color', content: site.meta.themeColor },
+          { name: 'viewport', content: 'width=device-width' },
+        ],
+      }}
+      openGraph={{
+        basic: {
+          image: ogImage.src,
+          title: title ?? site.meta.name,
+          type: 'website',
+          url: canonical,
+        },
+        optional: {
+          description: description ?? site.meta.description,
+          siteName: site.meta.name,
+        }
+      }}
+      title={title}
+      titleDefault={site.meta.name}
+      titleTemplate=`%s - ${site.meta.name}`
+      twitter={{
+        card: 'summary_large_image',
+        creator: site.chef.media.twitter,
+        description: description ?? site.meta.description,
+        image: ogImage.src,
+        imageAlt: site.meta.name,
+        title: title ?? site.meta.name,
+      }}
+    />
+
+    <slot name="schema" />
+
+    <ClientRouter />
+  </head>
   <body class="bg-gray-100 flex flex-col min-h-screen selection:bg-primary selection:text-white">
     <Header />
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
