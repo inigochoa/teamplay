@@ -28,8 +28,8 @@ const { games } = Astro.props
           e.preventDefault()
 
           const filter = (button as HTMLElement).dataset.filter
-          button.classList.add('active')
           buttons.forEach((btn: Element) => btn.classList.remove('active'))
+          button.classList.add('active')
 
           gameTiles.forEach((tile: Element) => {
             const tags = (tile as HTMLElement).dataset.tags!.split(',')
