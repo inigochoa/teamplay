@@ -1,8 +1,10 @@
 ---
+duration: '10–15 min'
 external: true
 icon: '🔖'
 link: 'https://juegos.nrnnm.com/etiquetas/'
 name: 'Etiquetas'
+players: '4 o más'
 summary: 'Elige las cinco etiquetas que mejor te representan y deja que el grupo intente adivinarlas.'
 tags: ['Confianza', 'Cooperativo', 'Deducción', 'En línea']
 ---

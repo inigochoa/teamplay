@@ -1,6 +1,8 @@
 ---
+duration: '15-30 min'
 icon: '🚫'
 name: 'Tabú'
+players: '4 o más (equipos)'
 summary: 'Haz que tu equipo adivine la palabra sin usar las palabras prohibidas.'
 tags: ['Cooperativo', 'Deducción', 'Presencial']
 timer: 60

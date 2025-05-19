@@ -1,8 +1,10 @@
 ---
+duration: '15–30 min'
 external: true
 icon: '❓'
 link: 'https://create.kahoot.it/discover'
 name: 'Kahoot'
+players: '2 o más'
 summary: 'Un desafío de trivia en el que la rapidez y el conocimiento se combinan para ganar puntos en cada pregunta.'
 tags: ['Competitivo', 'En línea', 'Trivia']
 ---

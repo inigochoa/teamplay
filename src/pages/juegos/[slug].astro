@@ -2,6 +2,9 @@
 import { getCollection, getEntry, render } from 'astro:content'
 import { Schema } from 'astro-seo-schema'
 import { getPageLdJson } from '../../lib/schema'
+import Arrow from '../../assets/arrow.svg'
+import Clock from '../../assets/clock.svg'
+import People from '../../assets/people.svg'
 import Layout from '../../layouts/Layout.astro'
 import ExternalLink from '../../components/ExternalLink.astro'
 import Timer from '../../components/Timer.astro'
@@ -27,6 +30,7 @@ const { Content } = await render(game)
 const itemSchema = {
   ...getPageLdJson(Astro.site, game)
 }
+
 ---
 
 <Layout
@@ -39,10 +43,35 @@ const itemSchema = {
   />
 
   <article class="prose prose-lg">
+    <a
+      class="inline-flex items-center mb-6 no-underline text-gray-600 text-sm transition-colors hover:text-primary"
+      href="/"
+    >
+      <Arrow class="h-4 mr-2 w-4" />
+      Todos los juegos
+    </a>
+
     <h1>
       <span transition:name={game.data.icon}>{game.data.icon}</span>
       <span transition:name={game.data.name}>{game.data.name}</span>
     </h1>
+
+    <ul class="flex flex-wrap gap-2 justify-center list-none my-2 text-gray-700 text-sm">
+      {game.data.tags.sort().map(tag => (
+        <li class="bg-gray-200 m-0 px-3 py-1 rounded-full">{tag}</li>
+      ))}
+    </ul>
+
+    <ul class="flex flex-wrap gap-2 justify-center list-none my-2 text-gray-600 text-sm">
+      <li class="flex gap-2 items-center m-0">
+        <Clock class="h-4 w-4" />
+        <span>{game.data.duration}</span>
+      </li>
+      <li class="flex gap-2 items-center m-0">
+        <People class="h-4 w-4" />
+        <span>{game.data.players}</span>
+      </li>
+    </ul>
 
     <Content />
   </article>
@@ -50,4 +79,3 @@ const itemSchema = {
   {game.data.external && <ExternalLink game={game} />}
   {game.data.timer && <Timer seconds={game.data.timer} />}
 </Layout>
-

@@ -1,6 +1,8 @@
 ---
+duration: '15–30 min'
 icon: '🎭'
 name: 'Mímica'
+players: '3 o más'
 summary: 'Actúa sin hablar y haz que los demás adivinen lo que representas.'
 tags: ['Competitivo', 'Cooperativo', 'Deducción', 'Presencial', 'Risas']
 timer: 60

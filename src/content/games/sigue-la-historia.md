@@ -1,6 +1,8 @@
 ---
+duration: '10–15 min'
 icon: '📜'
 name: 'Sigue la historia'
+players: '3 o más'
 summary: 'Cada jugador contribuye con una parte de la historia usando elementos al azar, creando relatos inesperados y divertidos.'
 tags: ['Cooperativo', 'Creatividad', 'Improvisación', 'Presencial']
 ---

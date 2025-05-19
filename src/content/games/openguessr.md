@@ -1,8 +1,10 @@
 ---
+duration: '15–25 min'
 external: true
 icon: '🌍'
 link: 'https://openguessr.com/'
 name: 'Opengessr'
+players: '2 o más (mejor en grupo)'
 summary: 'Pon a prueba tus habilidades geográficas adivinando ubicaciones a partir de imágenes de diferentes partes del mundo.'
 tags: ['Competitivo', 'En línea', 'Trivia']
 ---

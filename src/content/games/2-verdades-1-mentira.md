@@ -1,6 +1,8 @@
 ---
+duration: '10-20 min'
 icon: '🤥'
 name: '2 verdades, 1 mentira'
+players: '3 o más'
 summary: Un juego de engaño y observación donde los participantes deben descubrir cuál de tres afirmaciones es falsa.
 tags: ['Confianza', 'Cooperativo', 'Deducción', 'Presencial']
 timer: 120

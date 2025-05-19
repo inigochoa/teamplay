@@ -1,6 +1,8 @@
 ---
+duration: '10 min'
 icon: '🃏'
 name: 'Cara de póker'
+players: '3–6'
 summary: 'Lee frases graciosas sin reírte mientras los demás intentan hacerte perder la compostura.'
 tags: ['Competitivo', 'Estrategia', 'Presencial', 'Risas']
 ---

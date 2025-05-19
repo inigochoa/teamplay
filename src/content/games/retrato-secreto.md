@@ -1,6 +1,8 @@
 ---
+duration: '10–20 min'
 icon: '👤'
 name: 'Retrato secreto'
+players: '4–8'
 summary: 'Los jugadores se describen anónimamente en una categoría, y el grupo debe adivinar quién es quién.'
 tags: ['Confianza', 'Cooperativo', 'Deducción', 'Presencial']
 timer: 120

@@ -2,10 +2,12 @@ import { defineCollection, z } from 'astro:content'
 
 export const games = defineCollection({
   schema: z.object({
+    duration: z.string(),
     external: z.boolean().default(false),
     icon: z.string().emoji('Must be an emoji'),
     link: z.string().url().optional(),
     name: z.string(),
+    players: z.string(),
     summary: z.string(),
     tags: z.array(z.string()),
     timer: z.number().positive().optional(),

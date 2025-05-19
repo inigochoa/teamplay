@@ -1,5 +1,6 @@
 ---
-name: Aviso Legal
+name: 'Aviso Legal'
+summary: 'Información sobre la titularidad del sitio y condiciones de uso.'
 ---
 
 Este sitio web tiene como finalidad ofrecer juegos colaborativos gratuitos para

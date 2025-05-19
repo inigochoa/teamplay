@@ -1,8 +1,10 @@
 ---
+duration: '15–30 min'
 external: true
 icon: '🖌️'
 link: 'https://www.pinturillo2.com/es/'
 name: 'Pinturillo 2'
+players: '2 o más'
 summary: 'Dibuja palabras mientras los demás intentan adivinar lo más rápido posible en este divertido reto de creatividad.'
 tags: ['Competitivo', 'Creatividad', 'Dibujar', 'En línea']
 ---

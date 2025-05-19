@@ -1,5 +1,6 @@
 ---
-name: Política de Privacidad
+name: 'Política de Privacidad'
+summary: 'Detalla cómo se gestionan los datos personales (aunque no se recojan).'
 ---
 
 Este sitio no recoge ni almacena datos personales de los usuarios.

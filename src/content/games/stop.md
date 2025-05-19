@@ -1,6 +1,8 @@
 ---
+duration: '10–20 min'
 icon: '🛑'
 name: 'Stop'
+players: '2 o más'
 summary: 'Un reto de vocabulario en el que debes escribir palabras que comiencen con una letra dada en diferentes categorías.'
 tags: ['Competitivo', 'Presencial', 'Trivia']
 timer: 120

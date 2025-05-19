@@ -1,6 +1,8 @@
 ---
+duration: '10–20 min'
 icon: '🕵️‍♂️'
 name: '¿Quién soy?'
+players: '3 o más'
 summary: 'Descubre el personaje que tienes en la frente haciendo preguntas de "sí" o "no" hasta acertarlo.'
 tags: ['Cooperativo', 'Deducción', 'Presencial']
 timer: 120
