@@ -1,15 +1,14 @@
 ---
-import type Game from '../models/Game'
-import Tile from './Tile.astro'
-import TileRandom from './TileRandom.astro'
+import GameGridItem from './GameGridItem.astro'
+import GameGridItemRandom from './GameGridItemRandom.astro'
 
 const { games } = Astro.props
 ---
 <div class="gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 not-prose">
-  <TileRandom />
+  <GameGridItemRandom />
 
-  {games.map((item: Game) => (
-    <Tile item={item} />
+  {games.map((game: any) => (
+    <GameGridItem game={game} />
   ))}
 </div>
 

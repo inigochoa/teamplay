@@ -1,18 +1,24 @@
 ---
-import type Game from '../models/Game'
+import { getCollection } from 'astro:content'
 import { Schema } from 'astro-seo-schema'
-import games from '../data/games'
-import filters from '../data/filters'
 import site from '../data/site'
-import Filters from '../components/Filters.astro'
+import { getListLdJson } from '../lib/schema'
 import Layout from '../layouts/Layout.astro'
-import TileGrid from '../components/TileGrid.astro'
+import Filters from '../components/Filters.astro'
+import GameGrid from '../components/GameGrid.astro'
+
+const games = await getCollection('games')
+games.sort((a, b) => a.data.name.localeCompare(b.data.name))
+
+const filters = [
+  ...new Set(games.flatMap((game) => game.data.tags))
+].sort()
 
 const itemListElement = games
-  .map((game: Game, index) => {
+  .map((game, index: number) => {
     return {
-      ...game.getListLdJson(Astro.site),
-      position: index + 1
+      ...getListLdJson(Astro.site, game),
+      position: index + 1,
     }
   })
 ---
@@ -37,6 +43,6 @@ const itemListElement = games
     <p>Descubre una variedad de juegos de trabajo en equipo diseñados para mejorar la comunicación, elevar la moral y fomentar la colaboración entre los miembros de su equipo. Ya sea que estéis en la oficina o trabajando de forma remota, estas actividades ayudarán a crear un entorno de trabajo más cohesionado y productivo.</p>
 
     <Filters filters={filters} />
-    <TileGrid games={games} />
+    <GameGrid games={games} />
   </section>
 </Layout>

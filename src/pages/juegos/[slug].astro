@@ -1,45 +1,53 @@
 ---
-import type Game from '../../models/Game'
+import { getCollection, getEntry, render } from 'astro:content'
 import { Schema } from 'astro-seo-schema'
-import GameExternal from '../../models/GameExternal'
-import games from '../../data/games'
-import ExternalLink from '../../components/ExternalLink.astro'
+import { getPageLdJson } from '../../lib/schema'
 import Layout from '../../layouts/Layout.astro'
+import ExternalLink from '../../components/ExternalLink.astro'
 import Timer from '../../components/Timer.astro'
 
 export async function getStaticPaths() {
-  return games
-    .map((game: Game) => ({
+  const games = await getCollection('games')
+  return games.map(game => ({
     params: { slug: game.slug },
   }))
 }
 
 const { slug } = Astro.params
-const game = games.find((game: Game) => game.slug === slug)
+if (undefined === slug) {
+  return Astro.redirect('/404')
+}
 
-if (!game) {
-  throw new Error('Game not found')
+const game = await getEntry('games', slug)
+if (undefined === game) {
+  return Astro.redirect('/404')
+}
+
+const { Content } = await render(game)
+const itemSchema = {
+  ...getPageLdJson(Astro.site, game)
 }
 ---
+
 <Layout
-  description={game.descriptionShort}
-  title={game.name}
+  description={game.data.summary}
+  title={game.data.name}
 >
   <Schema
-    item={game.getPageLdJson(Astro.site)}
+    item={itemSchema}
     slot="schema"
   />
 
   <article class="prose prose-lg">
     <h1>
-      <span transition:name={game.icon}>{game.icon}</span>
-      <span transition:name={game.name}>{game.name}</span>
+      <span transition:name={game.data.icon}>{game.data.icon}</span>
+      <span transition:name={game.data.name}>{game.data.name}</span>
     </h1>
 
-    <Fragment set:html={game.description} />
+    <Content />
   </article>
 
-  {game instanceof GameExternal && <ExternalLink game={game} />}
-
-  {game.timer && <Timer seconds={game.timer} />}
+  {game.data.external && <ExternalLink game={game} />}
+  {game.data.timer && <Timer seconds={game.data.timer} />}
 </Layout>
+

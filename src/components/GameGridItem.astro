@@ -1,0 +1,20 @@
+---
+const { game } = Astro.props as { game: any }
+const label = `Jugar a ${game.data.name}`
+---
+<a
+  aria-label={label}
+  class="tile tile-game"
+  data-tags={game.data.tags.join(',')}
+  href={`/juegos/${game.slug}`}
+  title={label}
+>
+  <span
+    aria-label={label}
+    role="img"
+    transition:name={game.data.icon}
+  >
+    {game.data.icon}
+  </span>
+  <h2 transition:name={game.data.name}>{game.data.name}</h2>
+</a>

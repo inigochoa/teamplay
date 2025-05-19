@@ -2,18 +2,19 @@
 import Externallink from '../assets/externallink.svg'
 
 const { game } = Astro.props
+const label = `Jugar a ${game.data.name}`
 ---
 
 <div class="flex justify-center mt-12">
   <a
-    aria-label={game.getLabel()}
+    aria-label={label}
     class="btn btn-external"
-    href={game.link}
+    href={game.data.link}
     target="_blank"
     rel="noopener noreferrer"
-    title={game.getLabel()}
+    title={label}
   >
     <Externallink />
-    {game.getLabel()}
+    {label}
   </a>
 </div>

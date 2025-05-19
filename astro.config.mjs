@@ -18,7 +18,4 @@ export default defineConfig({
     robotsTxt(robotsConfig),
     sitemap(sitemapConfig),
   ],
-  experimental: {
-    svg: true,
-  },
 })
